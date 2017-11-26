@@ -5,7 +5,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.shadowOffsetX = 10;
   ctx.shadowOffsetY = 10;
   ctx.shadowBlur = 10;
-  ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
 
   ctx.beginPath();
   ctx.moveTo(100, 10);
@@ -38,8 +38,8 @@ window.renderStatistics = function (ctx, names, times) {
   var barHeight = 150;
   var baseline = 15;
 
-  for (var i = 0; i < times.length; i++){
-    if(times[i] > maxTime) {
+  for (var i = 0; i < times.length; i++) {
+    if (times[i] > maxTime) {
       maxTime = times[i];
       maxTimeIndex = i;
     }
@@ -47,19 +47,18 @@ window.renderStatistics = function (ctx, names, times) {
 
   var coeffHeight = -150 / (maxTime);
 
-  ctx.fillText('Худшее время: ' + parseInt(maxTime) + 'мс у игрока '
+  ctx.fillText('Худшее время: ' + parseInt(maxTime, 10) + 'мс у игрока '
                 + names[maxTimeIndex], 140, 100);
 
-  for(i = 0; i < times.length; i++){
-    if (names[i] !== 'Вы'){
-      ctx.fillStyle = 'rgba(0, 0, 255, '+(0.2 + 0.1 * i)+')';
-    }
-    else {
+  for (var j = 0; j < times.length; j++) {
+    if (names[j] !== 'Вы') {
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + (0.2 + 0.1 * j) + ')';
+    } else {
       ctx.fillStyle = 'rgba(0, 255, 0, 1)';
     }
 
-    ctx.fillRect(startX + (barWidth + step) * i, startY, barWidth ,times[i] * coeffHeight);
+    ctx.fillRect(startX + (barWidth + step) * j, startY, barWidth, times[j] * coeffHeight);
     ctx.fillStyle = 'black';
-    ctx.fillText(names[i], startX + (barWidth + step) * i, barHeight - baseline);
+    ctx.fillText(names[j], startX + (barWidth + step) * j, barHeight - baseline);
   }
-}
+};

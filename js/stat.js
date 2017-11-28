@@ -24,7 +24,6 @@ window.renderStatistics = function (ctx, names, times) {
   var step = 50;
   var barWidth = 40;
   var barHeight = 150;
-  var baseline = 15;
 
   for (var i = 0; i < times.length; i++) {
     if (times[i] > maxTime) {
@@ -43,7 +42,7 @@ window.renderStatistics = function (ctx, names, times) {
 
     ctx.fillRect(startX + (barWidth + step) * j, startY, barWidth, times[j] * coeffHeight);
     ctx.fillStyle = 'black';
-    ctx.fillText(names[j], startX + (barWidth + step) * j, startY + (baseline + 5));
-    ctx.fillText(parseInt(times[j], 10), startX + (barWidth + step) * j, startY + (times[j] * coeffHeight) - baseline);
+    ctx.fillText(names[j], startX + (barWidth + step) * j, startY + 20);
+    ctx.fillText(parseInt(times[j], 10), startX + (barWidth + step) * j, startY + (times[j] * coeffHeight) - 10);
   }
 };

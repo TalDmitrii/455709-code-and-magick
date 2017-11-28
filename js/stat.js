@@ -19,7 +19,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 120, 60);
 
   var maxTime = -1;
-  var maxTimeIndex = -1;
   var startX = 150;
   var startY = 240;
   var step = 50;
@@ -30,11 +29,10 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < times.length; i++) {
     if (times[i] > maxTime) {
       maxTime = times[i];
-      maxTimeIndex = i;
     }
   }
 
-  var coeffHeight = -150 / (maxTime);
+  var coeffHeight = -barHeight / (maxTime);
 
   for (var j = 0; j < times.length; j++) {
     if (names[j] !== 'Вы') {
